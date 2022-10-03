@@ -19,14 +19,13 @@ npm install env-cmd
 
 ```npm run test```
 
-## Useful Links
+## Fix Bug run metamask 
 
-- https://docs.cypress.io/guides/getting-started/installing-cypress
-- https://github.com/Synthetixio/synpress
-- https://github.com/yvesbou/synpress_metamask_login/new/main?readme=1
+```
+node_modules/@synthetixio/synpress/commands/metamask.js
 
-Overview over possible synpress functions:
-- https://github.com/synthetixio/synpress/blob/master/support/index.d.ts
+Replace file metamask.js ở root thay cho file này ==" tạm thế đã - chưa nghĩ ra cách fix hay hơn
+```
 
 
 
