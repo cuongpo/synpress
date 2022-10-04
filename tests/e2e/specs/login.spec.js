@@ -12,13 +12,11 @@ describe('Test User Login', () => {
         cy.wait(5000);
         cy.contains("Metamask").click();
         cy.wait(5000);
-        cy.switchToMetamaskWindow();
-        cy.wait(5000);
         cy.acceptMetamaskAccess().should("be.true");
         cy.wait(5000);
-        cy.switchToCypressWindow();
+        cy.contains('No Thanks').click();
         cy.wait(5000);
-        cy.get('#root > div > div > div.css-2h8wrg > div.css-i56gfm > div.css-1lzi37e > div > div.css-0 > div:nth-child(2) > div.css-eydfb5 > div:nth-child(1)').click();
+        cy.xpath('/html/body/div[1]/div/div/div[3]/div[2]/div[1]/div/div[2]/div[2]/div[1]/div[1]/div[3]/div/input').type('0.2');
         cy.wait(5000);
         cy.get("#root > div > div > div.css-2h8wrg > div.css-i56gfm > div.css-1lzi37e > div > div.css-l8af7v > div:nth-child(1) > button").click();
         cy.wait(5000);
