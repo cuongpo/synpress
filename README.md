@@ -27,6 +27,14 @@ node_modules/@synthetixio/synpress/commands/metamask.js
 Replace file metamask.js ở root thay cho file này ==" tạm thế đã - chưa nghĩ ra cách fix hay hơn
 ```
 
+## Find element by Xpath
 
+```
+npm install -D cypress-xpath
 
+vào 
+node_modules/@synthetixio/synpress/support/index.js
 
+thêm 
+require('cypress-xpath');
+```
