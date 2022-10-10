@@ -590,9 +590,7 @@ module.exports = {
     return walletAddress;
   },
   initialSetup: async ({ secretWordsOrPrivateKey, network, password }) => {
-    if (isInitialSetupDone) {
-      return;
-    }
+    
     const isCustomNetwork =
       (process.env.NETWORK_NAME &&
         process.env.RPC_URL &&
@@ -607,6 +605,9 @@ module.exports = {
       (await puppeteer.metamaskWindow().$(unlockPageElements.unlockPage)) ===
       null
     ) {
+      if (isInitialSetupDone) {
+        return;
+      }
       await module.exports.confirmWelcomePage();
       if (secretWordsOrPrivateKey.includes(' ')) {
         // secret words
@@ -629,18 +630,19 @@ module.exports = {
       await module.exports.unlock(password);
       walletAddress = await module.exports.getWalletAddress();
       await puppeteer.switchToCypressWindow();
-      isInitialSetupDone = true;
+  
       return true;
     }
   },
 };
+
 
 async function switchToMetamaskIfNotActive() {
   if (await puppeteer.isCypressWindowActive()) {
     await puppeteer.switchToMetamaskWindow();
     switchBackToCypressWindow = true;
   }
-  isInitialSetupDone = true;
+
   return switchBackToCypressWindow;
 }
 
@@ -649,6 +651,6 @@ async function switchToCypressIfNotActive() {
     await puppeteer.switchToCypressWindow();
     switchBackToCypressWindow = false;
   }
-  isInitialSetupDone = true;
+
   return switchBackToCypressWindow;
 }
